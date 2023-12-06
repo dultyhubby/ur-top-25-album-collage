@@ -1,0 +1,76 @@
+<!-- templates/albums.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Top Albums</title>
+    
+    <!-- Add your existing head content here -->
+
+    <!-- Add a style block for CSS -->
+    <style>
+        /* Style for the body to use flexbox */
+        body {
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            min-height: 100vh; /* Set the minimum height to the full height of the viewport */
+            margin: 0; /* Remove default margin */
+            flex-direction: column; /* Stack items vertically */
+            background-image: url('https://freefrontend.com/assets/img/css-background-patterns/2023-an-hypnotic-css-only-pattern.png');
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        /* Style for the header */
+        h1 {
+            margin-bottom: 20px; /* Add space between the header and the list */
+            font-size: 1.5em; /* 50% bigger font size */
+            color: #fff; /* Set the font color to white */
+        }
+
+        /* Style for the list of albums */
+        ul {
+            list-style-type: none; /* Remove list bullets */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Style for list items */
+        li {
+            font-size: 1.2em; /* Adjust the font size for list items */
+            margin-bottom: 10px; /* Add space between list items */
+            color: #fff; /* Set the font color to white */
+        }
+
+        /* Style for the button */
+        a {
+            text-decoration: none; /* Remove underline from the link */
+            margin-top: 20px; /* Add space between the list and the button */
+        }
+
+        button {
+            padding: 10px 20px; /* Add padding to the button */
+            font-size: 1em; /* Adjust the font size for the button */
+            background-color: #4CAF50; /* Set the background color */
+            color: white; /* Set the font color to white */
+            border: none; /* Remove the border */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            cursor: pointer; /* Add pointer cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Top Albums</h1>
+    <ul>
+        {% for album in top_albums %}
+            <li>{{ album[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add a link to trigger collage generation and display -->
+    <a href="{{ url_for('generate_collage') }}" target="_blank">
+        <button>Generate Collage</button>
+    </a>
+</body>
+</html>

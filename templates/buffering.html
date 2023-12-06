@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Top Albums</title>
+
+    <style>
+        /* Style for the body to use flexbox */
+        body {
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            min-height: 100vh; /* Set the minimum height to the full height of the viewport */
+            margin: 0; /* Remove default margin */
+            flex-direction: column; /* Stack items vertically */
+            background-image: url('https://freefrontend.com/assets/img/css-background-patterns/2023-an-hypnotic-css-only-pattern.png');
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        /* Style for the loading message */
+        h1 {
+            margin-bottom: 20px; /* Add space between the header and the list */
+            font-size: 1.5em; /* 50% bigger font size */
+            color: #fff; /* Set the font color to white */
+        }
+
+        /* Style for the list of albums */
+        ul {
+            list-style-type: none; /* Remove list bullets */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Style for list items */
+        li {
+            font-size: 1.2em; /* Adjust the font size for list items */
+            margin-bottom: 10px; /* Add space between list items */
+            color: #fff; /* Set the font color to white */
+        }
+
+        /* Style for the link */
+        a {
+            text-decoration: none; /* Remove underline from the link */
+            margin-top: 20px; /* Add space between the list and the link */
+        }
+    </style>
+
+    <!-- Add jQuery for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Add a script block for JavaScript -->
+    <script>
+        // Function to trigger image generation using AJAX
+        function generateCollage() {
+            // Display a message indicating image generation is in progress
+            $("#loadingMessage").text("Frank is getting your top 25 albums now...");
+
+            // Use AJAX to trigger the image generation route
+            $.ajax({
+                url: '/generate_collage_now',
+                type: 'GET',
+                success: function(response) {
+                    // If successful, redirect to the generated image
+                    window.location.href = response.redirect_url;
+                },
+                error: function(error) {
+                    // Handle any errors
+                    console.log(error);
+                    $("#loadingMessage").text("Failed to generate image. Please try again.");
+                }
+            });
+        }
+
+        // Automatically trigger image generation when the page loads
+        $(document).ready(function() {
+            generateCollage();
+        });
+    </script>
+</head>
+<body>
+    <h1 id="loadingMessage">Your Top Albums</h1>
+    <ul>
+        <!-- Display top albums here if needed -->
+    </ul>
+
+    <!-- Add a link with an embedded image -->
+    <img src="	https://media4.giphy.com/media/bG55Kf9BdsN8Y/giphy.gif" alt="Loading...">
+</body>
+</html>

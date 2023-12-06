@@ -1,0 +1,63 @@
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Spotify</title>
+    
+    <!-- Add a style block for CSS -->
+    <style>
+        /* Style for the body to use flexbox */
+        body {
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            height: 60vh; /* 35% taller than the full height of the viewport */
+            margin: 0; /* Remove default margin */
+            flex-direction: column; /* Stack items vertically */
+            background-image: url('https://freefrontend.com/assets/img/css-background-patterns/2023-an-hypnotic-css-only-pattern.png');
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        /* Style for the image button */
+        a img {
+            /* Initial styles */
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease-in-out;
+            /* Set the maximum width for responsiveness */
+            max-width: 100%;
+            /* Adjust the size as needed */
+            width: 200px; /* Adjust the width to your preference */
+            height: auto; /* Maintain proportionality */
+        }
+
+        /* Style for hover effect */
+        a:hover img {
+            /* Apply styles on hover */
+            transform: scale(1.1);
+            /* You can add additional styles here for highlighting */
+            /* For example, change the border or add a box-shadow */
+        }
+
+        /* Style for the header */
+        h1 {
+            margin-bottom: 20px; /* Add space between the header and the button */
+            font-size: 1.5em; /* 50% bigger font size */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Top 20 Albums of ALl Time!!</h1>
+    
+    <!-- Container for the button -->
+    <div>
+        <!-- Use Spotify logo as an image for the login button -->
+        <a href="{{ url_for('login') }}">
+            <img src="https://images.squarespace-cdn.com/content/v1/59a6fd41bebafb8b3f420544/1519917998014-G6SW42V49ZA7JSDOZJN3/image-asset.png" alt="Login Spotify">
+        </a>
+    </div>
+</body>
+</html>
